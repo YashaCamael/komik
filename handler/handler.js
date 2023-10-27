@@ -1,24 +1,24 @@
 import pool from "../config/database.js";
 
 export async function getMangas(){
-    const [rows] = await pool.query("SELECT * FROM ACTOR");
+    const [rows] = await pool.query("SELECT * FROM manga");
     return rows;
 };
 
-export async function getManga(actor_id){
+export async function getManga(id){
     const [rows] = await pool.query(`
     SELECT *
-    FROM ACTOR
-    WHERE actor_id = ?
-    `, [actor_id]);
+    FROM manga
+    WHERE id = ?
+    `, [id]);
     return rows[0];
 };
 
-export async function createManga(first_name, last_name){
+export async function createManga(title, cover, deskripsi){
     const [result] = await pool.query(`
-    INSERT INTO actor (first_name, last_name)
+    INSERT INTO actor (title, cover, deskripsi)
     VALUES ( ?, ?)
-    `, [first_name, last_name]);
+    `, [title, cover, deskripsi]);
     const id = result.insertId;
     return getManga(id);
 };

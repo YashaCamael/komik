@@ -4,7 +4,7 @@ dotenv.config();
 import { getManga,getMangas,createManga } from "./handler/handler.js";
 
 const PORT = process.env.PORT || 5000
-const HOST = process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0',
+const HOST = process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0'
 import express from "express"
 const app = express()
 
